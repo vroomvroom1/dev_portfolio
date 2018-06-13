@@ -1,12 +1,16 @@
+#controller portfolio items, standard CRUD functions. Most can be generated
+
 class PortfoliosController < ApplicationController
   def index
     @portfolio_items = Portfolio.all
   end
 
+#creates instance of Portfolio item
   def new
     @portfolio_item = Portfolio.new
   end
 
+#actually creates custom item
   def create
     @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
 
@@ -19,10 +23,12 @@ class PortfoliosController < ApplicationController
     end
   end
 
+#edit function opens form
   def edit
     @portfolio_item = Portfolio.find(params[:id])
   end
 
+#actually updates db
   def update
     @portfolio_item = Portfolio.find(params[:id])
 
@@ -35,10 +41,12 @@ class PortfoliosController < ApplicationController
     end
   end
 
+#link to page with portfolio information
   def show
     @portfolio_item = Portfolio.find(params[:id])
   end
 
+#delete fuction
   def destroy
     #looks up item
     @portfolio_item = Portfolio.find(params[:id])
