@@ -59,7 +59,7 @@ class BlogsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # friendly sets routes based on path, ex: my-blog-post-1 
+    # friendly sets routes based on path, ex: my-blog-post-1
     def set_blog
       @blog = Blog.friendly.find(params[:id])
     end
