@@ -1,6 +1,8 @@
 #controller portfolio items, standard CRUD functions. Most can be generated
 
 class PortfoliosController < ApplicationController
+  layout 'portfolio'
+
   def index
     @portfolio_items = Portfolio.all
   end
