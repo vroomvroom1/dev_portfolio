@@ -29,7 +29,7 @@
 
     <%= yield %>
 
-    <%= render "shared/nav" %>
+    <%= render "shared/nav", location: 'bottom' %>
 
 <!-- session data being displayed on page -->
     <% if session[:source] %>
