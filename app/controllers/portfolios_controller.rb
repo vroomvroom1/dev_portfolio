@@ -1,6 +1,7 @@
 #controller portfolio items, standard CRUD functions. Most can be generated
 
 class PortfoliosController < ApplicationController
+  before_action :show_portfolio_item, only: [:edit, :show, :update, :destroy]
   layout 'portfolio'
 
   def index
@@ -32,12 +33,10 @@ class PortfoliosController < ApplicationController
 
 #edit function opens form
   def edit
-    @portfolio_item = Portfolio.find(params[:id])
   end
 
 #actually updates db
   def update
-    @portfolio_item = Portfolio.find(params[:id])
 
     respond_to do |format|
       if @portfolio_item.update(portfolio_params)
@@ -50,14 +49,10 @@ class PortfoliosController < ApplicationController
 
 #link to page with portfolio information
   def show
-    @portfolio_item = Portfolio.find(params[:id])
   end
 
 #delete fuction
   def destroy
-    #looks up item
-    @portfolio_item = Portfolio.find(params[:id])
-
     #deletes item
     @portfolio_item.destroy
 
@@ -65,6 +60,11 @@ class PortfoliosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to portfolios_url, notice: 'Portfolio item was successfully deleted.' }
     end
+  end
+
+  def show_portfolio_item
+    #looks up item
+    @portfolio_item = Portfolio.find(params[:id])
   end
 
   private
